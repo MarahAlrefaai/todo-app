@@ -48,7 +48,7 @@ const ToDo = () => {
     let incompleteCount = list.filter(item => !item.complete).length;
     setIncomplete(incompleteCount);
     document.title = `To Do List: ${incomplete}`;
-  }, [list]);
+  }, [list,incomplete]);
 
   //----------------------------------------------
   useEffect(() => {

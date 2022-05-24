@@ -41,6 +41,11 @@ return (
 </form>
 </Auth>
 <Switch  checked={control.viewDone} onClick={handleComplete}>view Done Items  </Switch>
+<input type="number" placeholder='number Of Items' min='1' max="5" onChange={(e)=>{ control.setNumberOfItems(e.target.value);
+}}/>
+<button onClick={(e)=>{
+  localStorage.setItem("display settings",JSON.stringify(control))
+}}>save Settings</button>
 </div>
 )
 }

@@ -1,10 +1,13 @@
 import { ControlContext } from "../../context/control"
 import { useContext } from "react"
+import { LoginContext } from '../../context/Auth.js';
 import { Card } from "@blueprintjs/core";
-
+import Auth from '../authorization/authorization'
 export default function List (props){
   const control=useContext(ControlContext);
-  if(control.viewDone){  
+  const authentincation = useContext(LoginContext); 
+  if(control.viewDone){ 
+   
 return(
 
 
@@ -16,15 +19,15 @@ return(
           <p>{item.text}</p>
           <p><small>Assigned to: {item.assignee}</small></p>
           <p><small>Difficulty: {item.difficulty}</small></p>
-          <div onClick={() => props.toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
+          <div onClick={() =>authentincation.canDo('update')?props.toggleComplete(item.id):""}>Complete: {item.complete.toString()}</div>
           <hr />
+          <Auth  capability="delete">
           <button  id="Delete" onClick={()=>{
             props.deleteItem(item.id)
             }} >Delete</button>
-        </Card>  
-      
+            </Auth>
+        </Card>
       ))}
-
 </div>
 )
           }
@@ -41,12 +44,9 @@ return(
                     <button  id="Delete" onClick={()=>{
                       props.deleteItem(item.id)
                       }} >Delete</button>
-                  </Card>  
-                
+                  </Card>   
                 ))}</div>
-
-              )
-            
+              )  
           }
 
 

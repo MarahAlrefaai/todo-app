@@ -2,6 +2,7 @@ import { ControlContext } from '../../context/control.js';
 import { useContext } from 'react';
 import { Switch } from '@blueprintjs/core';
 import useForm from '../../hooks/form.js';
+import Auth from '../authorization/authorization'
 export default function Form(props) {
 const control=useContext(ControlContext);
   const { handleChange, handleSubmit } = useForm(props.addItem);
@@ -13,6 +14,8 @@ const control=useContext(ControlContext);
   }
 return (
   <div id='formHolder'>
+    <Auth  capability="create" >
+      
   <form id='formHolder1' onSubmit={handleSubmit}>
 
   <h2>Add To Do Item</h2>
@@ -36,7 +39,7 @@ return (
     <button type="submit">Add Item</button>
   </label>
 </form>
-
+</Auth>
 <Switch  checked={control.viewDone} onClick={handleComplete}>view Done Items  </Switch>
 </div>
 )

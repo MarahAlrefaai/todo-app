@@ -24,6 +24,16 @@ const ToDo = () => {
 const [userName, setUserName] = useState("");
 const [Password, setPassword] = useState("");
 const [role, setrole] = useState("");
+useEffect(()=>{
+  let parseData=JSON.parse(localStorage.getItem("data"))
+  if(parseData){
+    setList(parseData);
+  }
+  else {
+    setList([]);
+  }
+},[])
+
   function addItem(item) {
     console.log(item);
     item.id = uuid();
@@ -50,6 +60,7 @@ const [role, setrole] = useState("");
   }
 
   useEffect(() => {
+    
     let incompleteCount = list.filter(item => !item.complete).length;
     setIncomplete(incompleteCount);
     document.title = `To Do List: ${incomplete}`;

@@ -1,15 +1,19 @@
 import { ControlContext } from "../../context/control"
-import { useContext } from "react"
+import { useContext,useEffect } from "react"
+
 import { LoginContext } from '../../context/Auth.js';
 import { Card } from "@blueprintjs/core";
 import Auth from '../authorization/authorization'
 export default function List (props){
   const control=useContext(ControlContext);
   const authentincation = useContext(LoginContext); 
+  useEffect(()=>{
+localStorage.setItem("data",JSON.stringify(props.list))
+  },[props.list])
   if(control.viewDone){ 
-   
+    
 return(
-
+  
 
 
 <div className="mylist">

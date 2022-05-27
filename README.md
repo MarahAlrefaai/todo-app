@@ -3,9 +3,9 @@
 
 
 
+# Netlify
 
-
-[title](https://www.basefactor.com/global-state-with-react)
+[Netlify](https://62906b24bb92f15b1348ce13--superb-stardust-69a7e9.netlify.app/)
 
 
 
